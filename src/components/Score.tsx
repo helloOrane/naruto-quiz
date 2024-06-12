@@ -34,15 +34,15 @@ export default function Score({ score, resetQuizz }: ScoreProps) {
 
   return (
     <>
-      <CardHeader className="h-32">
+      <CardHeader className="h-32 md:h-40">
         <CardTitle className="font-bold text-center text-3xl uppercase">
           Score
         </CardTitle>
         <CardDescription className="text-center text-md font-bold text-orange-600">
-          Vous avez obtenu un score de {score}/{MAX_QUESTIONS} !
+          Tu as obtenu un score de {score}/{MAX_QUESTIONS} !
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col items-center h-80">
+      <CardContent className="flex flex-col items-center h-96 md:max-h-[450px] gap-4 md:gap-8 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] m-auto">
         <p className="text-justify">{handleScoreMessage(score)}</p>
 
           <button

@@ -40,7 +40,7 @@ export default function Quizz({ data }: QuizzProps) {
   return (
     <>
       <div className="flex justify-center mt-4 ">
-        <Card className="bg-white text-black w-96 h-[680px]">
+        <Card className="bg-white text-black w-[90%] max-h-[90%]">
           {stepQuiz === "quizz" ? (
             <QuizzContent
               displayScore={handleDisplayScore}

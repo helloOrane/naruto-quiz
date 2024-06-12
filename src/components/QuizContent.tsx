@@ -49,7 +49,7 @@ export default function QuizzContent({
 
   return (
     <>
-      <CardHeader className="h-32 ">
+      <CardHeader className="h-32 md:h-44 ">
         <CardTitle className="font-bold text-center text-xl uppercase">
           Question {currentQuestionIndex + 1}/{MAX_QUESTIONS}
         </CardTitle>
@@ -57,10 +57,10 @@ export default function QuizzContent({
           {currentQuestion.question}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col items-center h-80 gap-4">
+      <CardContent className="flex flex-col items-center h-96 md:max-h-[350px] xl:max-h-[450px] gap-4 md:gap-6 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] gap-4 md:gap-8 m-auto ">
         {currentQuestion.options.map((option, index) => (
           <Card
-            className="bg-amber-400 text-black w-full p-4 text-center shadow-lg cursor-pointer border-transparent hover:bg-amber-600 "
+            className="w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] bg-amber-400 text-black w-full font-bold p-4 text-center shadow-lg cursor-pointer border-transparent hover:bg-amber-600 "
             key={index}
             onClick={() => handleAnswerSubmit(option)}
           >
