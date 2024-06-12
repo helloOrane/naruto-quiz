@@ -1,11 +1,13 @@
+/* eslint-disable react/no-unescaped-entities */
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 const MAX_QUESTIONS = 10;
 
 type ScoreProps = {
   score: number;
+  resetQuizz: () => void;
 };
-export default function Score({ score }: ScoreProps) {
+export default function Score({ score, resetQuizz }: ScoreProps) {
   const handleScoreMessage = (score: number) => {
     let message = "";
 
@@ -36,12 +38,19 @@ export default function Score({ score }: ScoreProps) {
         <CardTitle className="font-bold text-center text-3xl uppercase">
           Score
         </CardTitle>
-        <CardDescription className="text-center text-md">
+        <CardDescription className="text-center text-md font-bold text-orange-600">
           Vous avez obtenu un score de {score}/{MAX_QUESTIONS} !
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col items-center h-80">
         <p className="text-justify">{handleScoreMessage(score)}</p>
+
+          <button
+            className="w-full bg-amber-400 hover:bg-amber-600 text-black font-bold py-4 px-6 rounded-full mx-2 mt-10" 
+            onClick={() => resetQuizz()}
+          >
+            Retour à la page d'accueil
+          </button>
       </CardContent>
     </>
   );

@@ -16,12 +16,10 @@ export default function Quizz({ data }: QuizzProps) {
   const [currentLevel, setCurrentLevel] = useState<LEVEL>("débutant");
   const [score, setScore] = useState(0);
   const [stepQuiz, setStepQuiz] = useState<STEP>("selectLevel");
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [userAnswers, setUserAnswers] = useState<string[]>([]);
 
   const currentQuizz = data[currentLevel];
-
-  const restartQuizz = () => {
-    setStepQuiz("selectLevel");
-  };
 
   const handleSelectLevel = (level: LEVEL) => {
     setCurrentLevel(level);
@@ -31,9 +29,17 @@ export default function Quizz({ data }: QuizzProps) {
     setStepQuiz("score");
   };
 
+  const resetQuizz = () => {
+    setCurrentQuestionIndex(0);
+    setUserAnswers([]);
+    setScore(0);
+    setStepQuiz("selectLevel");
+
+  };
+
   return (
     <>
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-4 ">
         <Card className="bg-white text-black w-96 h-[680px]">
           {stepQuiz === "quizz" ? (
             <QuizzContent
@@ -41,10 +47,13 @@ export default function Quizz({ data }: QuizzProps) {
               score={score}
               setScore={setScore}
               currentQuizz={currentQuizz}
-              restartQuizz={restartQuizz}
+              currentQuestionIndex={currentQuestionIndex}
+              setCurrentQuestionIndex={setCurrentQuestionIndex}
+              userAnswers={userAnswers}
+              setUserAnswers={setUserAnswers}
             />
           ) : stepQuiz === "score" ? (
-            <Score score={score} />
+            <Score score={score} resetQuizz={resetQuizz}/>
           ) : (
             <SelectLevel handleSelectLevel={handleSelectLevel} />
           )}

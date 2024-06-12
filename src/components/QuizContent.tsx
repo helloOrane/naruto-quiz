@@ -1,27 +1,37 @@
 "use client";
 import { useState } from "react";
 import { QuizzQuestion } from "../utils/types";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
-
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 
 const MAX_QUESTIONS = 10;
 
 type QuizzProps = {
   currentQuizz: QuizzQuestion[];
-  restartQuizz: () => void;
+  // restartQuizz: () => void;
   score: number;
   setScore: (value: number) => void;
   displayScore: () => void;
+  setCurrentQuestionIndex: (value: number) => void;
+  currentQuestionIndex: number;
+  setUserAnswers: (value: string[]) => void;
+  userAnswers: string[];
 };
 export default function QuizzContent({
   displayScore,
   currentQuizz,
-  restartQuizz,
   score,
   setScore,
+  setCurrentQuestionIndex,
+  currentQuestionIndex,
+  setUserAnswers,
+  userAnswers,
 }: QuizzProps) {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<string[]>([]);
   const currentQuestion = currentQuizz[currentQuestionIndex];
 
   const handleAnswerSubmit = (answer: string) => {
@@ -34,17 +44,7 @@ export default function QuizzContent({
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
       displayScore();
-      setTimeout(() => {
-        resetQuizz();
-      }, 10000);
     }
-  };
-
-  const resetQuizz = () => {
-    setCurrentQuestionIndex(0);
-    setUserAnswers([]);
-    setScore(0);
-    restartQuizz();
   };
 
   return (
