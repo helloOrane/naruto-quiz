@@ -1,7 +1,7 @@
 "use client";
+import React from "react";
 import { useState } from "react";
 import Image from "next/image";
-// import Naruto from "@/public/images/naruto-head.png";
 import Laptop from "@/public/img/naruto.png";
 import SelectLevel from "./SelectLevel";
 import Score from "./Score";
@@ -59,7 +59,7 @@ export default function Quizz({ data }: QuizzProps) {
           )}
 
           <CardFooter className="flex justify-center">
-            <Image src={Laptop} alt="Naruto head picture" height={200} />
+            <Image src={Laptop} alt="Naruto head picture" className="max-h-[150px] md:max-h-52 w-auto" />
           </CardFooter>
         </Card>
       </div>

@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import React from "react";
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 
 const MAX_QUESTIONS = 10;
@@ -34,7 +35,7 @@ export default function Score({ score, resetQuizz }: ScoreProps) {
 
   return (
     <>
-      <CardHeader className="h-32 md:h-40">
+      <CardHeader className="h-32">
         <CardTitle className="font-bold text-center text-3xl uppercase">
           Score
         </CardTitle>
@@ -42,11 +43,11 @@ export default function Score({ score, resetQuizz }: ScoreProps) {
           Tu as obtenu un score de {score}/{MAX_QUESTIONS} !
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col items-center h-96 md:max-h-[450px] gap-4 md:gap-8 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] m-auto">
+      <CardContent className="flex flex-col items-center h-80 md:max-h-[450px] gap-4 md:gap-8 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] m-auto">
         <p className="text-justify">{handleScoreMessage(score)}</p>
 
           <button
-            className="w-full bg-amber-400 hover:bg-amber-600 text-black font-bold py-4 px-6 rounded-full mx-2 mt-10" 
+            className="w-full bg-amber-400 hover:bg-amber-600 text-black font-bold py-4 px-6 rounded-full mx-2 mt-10 shadow-xl" 
             onClick={() => resetQuizz()}
           >
             Retour à la page d'accueil

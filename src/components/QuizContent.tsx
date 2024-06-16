@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { QuizzQuestion } from "../utils/types";
 import {
   Card,
@@ -8,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
+import React from "react";
 
 const MAX_QUESTIONS = 10;
 
@@ -49,18 +49,18 @@ export default function QuizzContent({
 
   return (
     <>
-      <CardHeader className="h-32 md:h-44 ">
-        <CardTitle className="font-bold text-center text-xl uppercase">
+      <CardHeader className="h-32 ">
+        <CardTitle className="font-bold text-center text-2xl md:text-3xl uppercase">
           Question {currentQuestionIndex + 1}/{MAX_QUESTIONS}
         </CardTitle>
         <CardDescription className="text-center text-md">
           {currentQuestion.question}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col items-center h-96 md:max-h-[350px] xl:max-h-[450px] gap-4 md:gap-6 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] gap-4 md:gap-8 m-auto ">
+      <CardContent className="flex flex-col items-center h-80 md:max-h-[350px] xl:max-h-[450px] gap-4 md:gap-6 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] m-auto ">
         {currentQuestion.options.map((option, index) => (
           <Card
-            className="w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] bg-amber-400 text-black w-full font-bold p-4 text-center shadow-lg cursor-pointer border-transparent hover:bg-amber-600 "
+            className="w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] bg-amber-400 text-black font-bold p-4 text-center cursor-pointer border-transparent rounded-full hover:bg-amber-600 shadow-xl"
             key={index}
             onClick={() => handleAnswerSubmit(option)}
           >
