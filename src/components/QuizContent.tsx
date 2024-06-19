@@ -59,13 +59,13 @@ export default function QuizzContent({
       </CardHeader>
       <CardContent className="flex flex-col items-center h-80 md:max-h-[350px] xl:max-h-[450px] gap-4 md:gap-6 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] m-auto ">
         {currentQuestion.options.map((option, index) => (
-          <Card
-            className="w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] bg-amber-400 text-black font-bold p-4 text-center cursor-pointer border-transparent rounded-full hover:bg-amber-600 shadow-xl"
+          <button
+            className="w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] bg-amber-400 hover:bg-amber-600 text-black font-bold py-4 px-6 rounded-full mx-2 shadow-xl"
             key={index}
             onClick={() => handleAnswerSubmit(option)}
           >
             <p>{option}</p>
-          </Card>
+          </button>
         ))}
       </CardContent>
     </>

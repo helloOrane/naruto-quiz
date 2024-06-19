@@ -163,7 +163,7 @@ export const quizz: QuizzType = {
         {
             id: 3,
             question: "Qui a fondé l'Akatsuki ?",
-            options: ["Orochimaru", "Sasuke Uchiha", "Orochimaru", "Yahiko"],
+            options: ["Orochimaru", "Sasuke Uchiha", "Tobi", "Yahiko"],
             answer: "Yahiko",
             heroId: 23
         },
