@@ -1,19 +1,12 @@
 "use client";
 import { QuizzQuestion } from "../utils/types";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
+import { CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import React, { useEffect, useState } from "react";
 
 const MAX_QUESTIONS = 10;
 
 type QuizzProps = {
   currentQuizz: QuizzQuestion[];
-  // restartQuizz: () => void;
   score: number;
   setScore: (value: number) => void;
   displayScore: () => void;
@@ -43,7 +36,9 @@ export default function QuizzContent({
     }
     setUserAnswers([...userAnswers, answer]);
     if (currentQuestionIndex < currentQuizz.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setTimeout(() => {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }, 100);
     } else {
       displayScore();
     }
@@ -63,13 +58,14 @@ export default function QuizzContent({
           {currentQuestion.question}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col items-center h-80 md:max-h-[350px] xl:max-h-[450px] gap-4 md:gap-6 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] m-auto ">
+      <CardContent className=" flex flex-col items-center h-80 md:max-h-[350px] xl:max-h-[450px]  gap-4 md:gap-6 w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] m-auto ">
         {currentQuestion.options.map((option, index) => (
           <button
-            className="w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] bg-amber-400 hover:bg-amber-600 text-black font-bold py-4 px-6 rounded-full mx-2 shadow-xl"
+            className={`w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px]    text-black font-bold py-4 px-6 rounded-full mx-2 shadow-xl ${
+              selectedOption === option ? "bg-amber-600" : "bg-amber-400 "
+            }`}
             key={index}
             onClick={() => handleAnswerSubmit(option)}
-            disabled={!!selectedOption}
           >
             <p>{option}</p>
           </button>
