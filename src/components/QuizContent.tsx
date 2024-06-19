@@ -69,6 +69,7 @@ export default function QuizzContent({
             className="w-full md:w-[90%] lg:w-[80%] xl:max-w-[550px] bg-amber-400 hover:bg-amber-600 text-black font-bold py-4 px-6 rounded-full mx-2 shadow-xl"
             key={index}
             onClick={() => handleAnswerSubmit(option)}
+            disabled={!!selectedOption}
           >
             <p>{option}</p>
           </button>
