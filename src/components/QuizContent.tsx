@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const MAX_QUESTIONS = 10;
 
@@ -33,8 +33,10 @@ export default function QuizzContent({
   userAnswers,
 }: QuizzProps) {
   const currentQuestion = currentQuizz[currentQuestionIndex];
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
   const handleAnswerSubmit = (answer: string) => {
+    setSelectedOption(answer);
     const correctAnswer = currentQuestion.answer;
     if (answer === correctAnswer) {
       setScore(score + 1);
@@ -46,6 +48,10 @@ export default function QuizzContent({
       displayScore();
     }
   };
+
+  useEffect(() => {
+    setSelectedOption(null);
+  }, [currentQuestionIndex]);
 
   return (
     <>
